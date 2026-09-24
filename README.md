@@ -4,7 +4,7 @@
 
 In this practical you will call **copy-number aberrations (CNAs)** in tumour samples with ASCAT, see how that call fails when the data are noisy or the samples are mismatched, and then call **structural variants (SVs)** with GRIDSS and check them by eye in IGV.
 
-You don't need to be an experienced programmer. Most of the code is given to you. Your job is to run it, look closely at what comes out, and answer the questions. **The questions matter more than the code.**
+You don't need to be an experienced programmer. Most of the code is given to you. Your job is to run it, look closely at what comes out, and answer the questions.
 
 ---
 
@@ -17,13 +17,13 @@ By the end of the practical you should be able to answer four questions:
 3. **Structural variants:** how does an SV caller find a rearrangement in aligned reads? (split reads, discordant read pairs, assembly)
 4. **Evidence:** how do you decide whether a call is real? (inspecting the reads yourself in IGV)
 
-ASCAT and GRIDSS are just the examples here. Other callers, such as [Battenberg](https://github.com/Wedge-lab/battenberg) for copy number, work on the same principles, so what you learn today carries over to them.
+ASCAT and GRIDSS are just the examples here. However, most callers work on the same principles, so what you learn today carries over to them.
 
 ---
 
 ## The practical, part by part
 
-Work through the parts in order. Each folder has its own README with the instructions and questions.
+We will tackle part by part. Each folder has its own README with the instructions and questions.
 
 | Part | Folder | What you do |
 |------|--------|-------------|
@@ -64,15 +64,9 @@ LogR (tumour, corrected for normal) = LogR_tumour − LogR_normal
 
 ## Getting started
 
-Everything you need (R, ASCAT, GRIDSS, IGV, samtools) is already installed on the course virtual machine.
+You will work on a **Linux virtual machine (VM)** prepared for the course. This repository and all the software you need (R, ASCAT, GRIDSS2, IGV, samtools, VS Code) are already installed on it, so **you don't need to install or download anything.**
 
-```bash
-git clone <repository-url>
-cd <repository-name>
-code .
-```
-
-This opens the repository in VS Code. Open the R files in each folder and run them **line by line**: put the cursor on a line and press `Ctrl+Enter` (`Cmd+Enter` on a Mac). Look at the objects you create as you go.
+Open the repository folder in VS Code. Open the R files in each folder and run them **line by line**: put the cursor on a line and press `Ctrl+Enter`. Look at the objects you create as you go.
 
 A first check in the R console:
 
@@ -82,31 +76,40 @@ sessionInfo()      # Which version of R are you running?
 
 > **Tip:** `str(x)` shows what is inside an object, `head(x)` shows its first rows, and `?functionName` opens the help page for a function.
 
-Large files (BAMs, reference genomes) stay on the VM, outside this repository.
+Large files (BAMs, reference genomes) are stored on the VM, outside this repository.
 
 Then start with **[Part 1](1_ASCAT/README.md)**.
 
 ---
 
-## Software
+## Software used
 
-All tools are preinstalled on the VM. To install them on your own machine, follow the instructions on each project's page.
+Everything below is preinstalled on the VM.
 
-| Tool | Source | Version |
-|------|--------|---------|
-| R | https://www.r-project.org/ | _fill in_ |
-| ASCAT | https://github.com/VanLoo-lab/ascat | _fill in_ |
-| GRIDSS2 | https://github.com/PapenfussLab/gridss | _fill in_ |
-| IGV | https://igv.org/ | _fill in_ |
-| samtools | https://github.com/samtools/samtools | _fill in_ |
-| VS Code + R extension | https://code.visualstudio.com/ | _fill in_ |
+| Tool | What we use it for | Version |
+|------|--------------------|---------|
+| [R](https://www.r-project.org/) | Running ASCAT | _fill in_ |
+| [ASCAT](https://github.com/VanLoo-lab/ascat) | Allele-specific copy-number calling | _fill in_ |
+| [GRIDSS2](https://github.com/PapenfussLab/gridss) | Structural variant calling | _fill in_ |
+| [IGV](https://igv.org/) | Looking at reads and variant calls | _fill in_ |
+| [samtools](https://www.htslib.org/) | Working with BAM files | _fill in_ |
+| [VS Code](https://code.visualstudio.com/) + R extension | Editing and running code | _fill in_ |
 
-**Dependencies:**
-- GRIDSS2 needs Java and BWA, and the reference FASTA must be BWA-indexed.
-- The VS Code R extension needs the R packages `languageserver` and (recommended, for plots) `httpgd`.
+### Installing the software on your own computer (optional)
+
+**You don't need this for the course.** It's only for if you want to repeat the practical later on your own machine. Follow the official instructions linked below.
+
+- **R:** download from [CRAN](https://cran.r-project.org/).
+- **ASCAT:** an R package installed from GitHub. See the *Installation* section of the [ASCAT README](https://github.com/VanLoo-lab/ascat).
+- **GRIDSS2:** download a release from the [GRIDSS GitHub page](https://github.com/PapenfussLab/gridss). It also needs Java, BWA and R, and the reference genome must be BWA-indexed.
+- **IGV:** download the desktop app from [igv.org](https://igv.org/doc/desktop/#DownloadPage/).
+- **samtools:** see the [htslib download page](https://www.htslib.org/download/). Often run on high performance computers on which samtools is preinstalled.
+- **VS Code + extensions:** download from [VS Code website](https://code.visualstudio.com/). The R extension as well as integrated AI extensions can be installed within VS code.
+
+> **Tip:** Many bioinformatic tools can be conveniently installed on Linux and macOS via [conda/Bioconda](https://bioconda.github.io/).
 
 ---
 
 ## Credits
 
-Based on the practical material by Maxime Tarabichi (maxime.tarabichi@ulb.be).
+This tutorial is based on material from Maxime Tarabichi.
