@@ -23,16 +23,17 @@ ASCAT and GRIDSS are just the examples here. However, most callers work on the s
 
 ## The practical, part by part
 
-We will tackle part by part. Each folder has its own README with the instructions and questions.
+We will tackle part by part. Each folder has its own README with the instructions, and a QUESTIONS.md with the questions.
 
 | Part | Folder | What you do |
 |------|--------|-------------|
-| 1 | [1_ASCAT/](1_ASCAT/README.md) | Run the full ASCAT workflow: raw data → correction → segmentation → purity/ploidy fit → QC. |
-| 2 | [2_NOISE/](2_NOISE/README.md) | Add increasing noise to a sample and find where the fit breaks. You design the experiment; an AI assistant writes the code, and you check it. |
-| 3 | [3_MIXED_BAM/](3_MIXED_BAM/README.md) | Pair a tumour with a normal from another patient and learn to recognise the mismatch. |
-| 4 | [4_GRIDDS/](4_GRIDDS/README.md) | Call SVs with GRIDSS and inspect the evidence for each call in IGV. |
+| 1 | [1_ascat_basics/](1_ascat_basics/README.md) | Run the full ASCAT workflow: raw data → correction → segmentation → purity/ploidy fit → QC. |
+| 2 | [2_ascat_advanced/](2_ascat_advanced/README.md) | Go deeper into ASCAT: the gamma parameter, the segmentation penalty, refitting a profile and tumour-only mode. |
+| 3 | [3_ascat_noise/](3_ascat_noise/README.md) | Add increasing noise to a sample and find where the fit breaks. |
+| 4 | [4_ascat_mixup/](4_ascat_mixup/README.md) | Pair a tumour with a normal from another patient and learn to recognise the mismatch. |
+| 5 | [5_gridds/](5_gridds/README.md) | Call SVs with GRIDSS and inspect the evidence for each call in IGV. |
 
-Bonus exercises on ASCAT internals are at the end of [Part 1](1_ASCAT/README.md#bonus-if-you-have-time).
+Parts 2 and 3 build on the results of Part 1, so run Part 1 first.
 
 ---
 
@@ -78,7 +79,7 @@ sessionInfo()      # Which version of R are you running?
 
 Large files (BAMs, reference genomes) are stored on the VM, outside this repository.
 
-Then start with **[Part 1](1_ASCAT/README.md)**.
+Then start with **[Part 1](1_ascat_basics/README.md)**.
 
 ---
 
@@ -86,14 +87,14 @@ Then start with **[Part 1](1_ASCAT/README.md)**.
 
 Everything below is preinstalled on the VM.
 
-| Tool | What we use it for | Version |
-|------|--------------------|---------|
-| [R](https://www.r-project.org/) | Running ASCAT | _fill in_ |
-| [ASCAT](https://github.com/VanLoo-lab/ascat) | Allele-specific copy-number calling | _fill in_ |
-| [GRIDSS2](https://github.com/PapenfussLab/gridss) | Structural variant calling | _fill in_ |
-| [IGV](https://igv.org/) | Looking at reads and variant calls | _fill in_ |
-| [samtools](https://www.htslib.org/) | Working with BAM files | _fill in_ |
-| [VS Code](https://code.visualstudio.com/) + R extension | Editing and running code | _fill in_ |
+| Tool | What we use it for |
+|------|--------------------|
+| [R](https://www.r-project.org/) | Running ASCAT |
+| [ASCAT](https://github.com/VanLoo-lab/ascat) | Allele-specific copy-number calling |
+| [GRIDSS2](https://github.com/PapenfussLab/gridss) | Structural variant calling |
+| [IGV](https://igv.org/) | Looking at reads and variant calls |
+| [samtools](https://www.htslib.org/) | Working with BAM files |
+| [VS Code](https://code.visualstudio.com/) + [R extension](https://code.visualstudio.com/docs/languages/r) | Editing and running code |
 
 ### Installing the software on your own computer (optional)
 
