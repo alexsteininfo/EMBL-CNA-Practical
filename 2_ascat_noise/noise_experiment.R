@@ -1,11 +1,11 @@
 ###############################################################################
-# Part 3: How much noise can ASCAT tolerate?
+# Part 2: How much noise can ASCAT tolerate?
 #
 # We take one sample from Part 1, make several copies of it with increasing
 # noise added to the tumour LogR, run ASCAT on all copies and compare.
 #
 # Run this script line by line and answer the questions in the comments.
-# The questions are also in 3_ascat_noise/QUESTIONS.md.
+# The questions are also in 2_ascat_noise/QUESTIONS.md.
 #
 # All paths are relative to the repository root (see getwd()).
 ###############################################################################
@@ -13,8 +13,8 @@
 library(ASCAT)
 
 data_dir    <- "0_data/ascat_data"     # the original input files from Part 1
-noisy_dir   <- "3_ascat_noise/noisy_data"    # the noisy input files are written here
-results_dir <- "3_ascat_noise/results"       # ASCAT plots and tables for this part
+noisy_dir   <- "2_ascat_noise/noisy_data"    # the noisy input files are written here
+results_dir <- "2_ascat_noise/results"       # ASCAT plots and tables for this part
 dir.create(noisy_dir,   showWarnings = FALSE)
 dir.create(results_dir, showWarnings = FALSE)
 

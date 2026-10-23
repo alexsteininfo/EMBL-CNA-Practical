@@ -2,14 +2,9 @@
 
 Answer these while you run [ascat_basics.R](ascat_basics.R) line by line. Folder names refer to `1_ascat_basics/results/`.
 
-## Before you start
-
-- Which version of R are you running?
-
 ## Step 1: Load the library
 
-- Which version of ASCAT are you running?
-- Which other packages are loaded with it?
+- Which versions of R and ASCAT are you running?
 
 ## Step 2: Load the data
 
@@ -33,19 +28,23 @@ Answer these while you run [ascat_basics.R](ascat_basics.R) line by line. Folder
 
 - The blue lines are the segments. How similar or different are the three profiles?
 - In S1, find a segment where the BAF splits into two bands away from 0.5. What does that tell you about the two parental copies there? What does the LogR do in the same segment?
-- Why does the BAF panel show fewer SNPs than the LogR panel?
 - Can you spot samples that look problematic? What is wrong with them, and how might you fix it? (If you can't tell yet, come back after Step 7.)
 
 ## Step 6: Fit purity and ploidy (`4_ascat_fit/`)
 
-- What does each element of `ascat.output` represent? And the files written to `4_ascat_fit/`?
 - Open a sunrise plot (`*.sunrise.png`). What do its axes show, and what does the chosen point mean? Is there more than one good area?
 - Open the `*.ASCATprofile.png` files. What do the red and blue lines show? Find a region with LOH and, if there is one, a homozygous deletion.
 - For each sample: what purity and ploidy did ASCAT find? Are these values plausible for a tumour sample? Do the copy-number profiles make sense to you?
 
 ## Step 7: Quality metrics
 
-- What kind of object is `QC`? Did the function write anything to disk?
 - Look at `tumour_mapd` (noise in the tumour LogR) and `homdel_fraction` (fraction of the genome with homozygous deletion). Which samples stand out, and why might that be?
-- Compare `GC_correction_before` with `GC_correction_after`. What do these numbers measure, and does it fit what you saw in Step 4?
 - Which sample has the lowest `goodness_of_fit`? Does a high goodness of fit alone prove that a solution is correct?
+
+## Step 8: Refitting a profile (`5_refit/`)
+
+- Look at `S63.ASCATprofile.png` and `S63.sunrise.png` in `4_ascat_fit/`. Is the chosen point (the cross) in the best (darkest blue) area of the sunrise plot? Where else is there a good area?
+- Do you believe this solution? Why (not)?
+- Did the refit change anything? If not, which bounds do you have to change so that ASCAT picks the other good area of the sunrise plot?
+- Compare `S63.ASCATprofile.png` in `4_ascat_fit/` and `5_refit/`. Which solution do you think is better?
+- How could you find out for sure which one is correct? (Hint: what extra data or experiment would settle it?)

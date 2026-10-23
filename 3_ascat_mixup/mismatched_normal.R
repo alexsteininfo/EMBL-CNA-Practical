@@ -1,5 +1,5 @@
 ###############################################################################
-# Part 4: Tumour paired with the wrong normal
+# Part 3: Tumour paired with the wrong normal
 #
 # We take one tumour from the Part 1 example data and pair it twice:
 #   1. with its own normal (correct), and
@@ -7,7 +7,7 @@
 # Then we run ASCAT on both pairs and compare.
 #
 # Run this script line by line and answer the questions in the comments.
-# The questions are also in 4_ascat_mixup/QUESTIONS.md.
+# The questions are also in 3_ascat_mixup/QUESTIONS.md.
 #
 # All paths are relative to the repository root (see getwd()).
 ###############################################################################
@@ -15,8 +15,8 @@
 library(ASCAT)
 
 data_dir    <- "0_data/ascat_data"     # the original input files from Part 1
-pair_dir    <- "4_ascat_mixup/data"      # the matched and mismatched input files
-results_dir <- "4_ascat_mixup/results"   # ASCAT plots and tables for this part
+pair_dir    <- "3_ascat_mixup/data"      # the matched and mismatched input files
+results_dir <- "3_ascat_mixup/results"   # ASCAT plots and tables for this part
 dir.create(pair_dir,    showWarnings = FALSE)
 dir.create(results_dir, showWarnings = FALSE)
 
@@ -85,9 +85,11 @@ ascat.plotSegmentedData(ascat.pairs, img.dir = plot_dirs["segmented"])
 ascat.pairs.output <- ascat.runAscat(ascat.pairs, img.dir = plot_dirs["fit"], write_segments = TRUE)
 QC.pairs <- ascat.metrics(ascat.pairs, ascat.pairs.output)
 
-QC.pairs[, c("n_het_SNP", "n_segs", "purity", "ploidy", "goodness_of_fit", "LOH")]
+# frac_homo: fraction of the SNPs heterozygous in the normal that look
+# homozygous in the tumour (tumour BAF below 0.1 or above 0.9).
+QC.pairs[, c("n_het_SNP", "frac_homo", "n_segs", "purity", "ploidy", "goodness_of_fit", "LOH")]
 
-# Open the PNG files in the subfolders of 4_ascat_mixup/results/ and compare
+# Open the PNG files in the subfolders of 3_ascat_mixup/results/ and compare
 # the two pairs.
 #
 # Q: Compare the *.tumour.png plots of the two pairs in

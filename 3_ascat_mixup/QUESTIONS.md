@@ -1,6 +1,6 @@
-# Part 4: Questions
+# Part 3: Questions
 
-Answer these while you run [mismatched_normal.R](mismatched_normal.R) line by line. Folder names refer to `4_ascat_mixup/results/`. Answer Step 1 **before** you run anything.
+Answer these while you run [mismatched_normal.R](mismatched_normal.R) line by line. Folder names refer to `3_ascat_mixup/results/`. Answer Step 1 **before** you run anything.
 
 ## Step 1: Before running anything
 

@@ -1,4 +1,4 @@
-# Part 4: Tumour paired with the wrong normal
+# Part 3: Tumour paired with the wrong normal
 
 [← Back to overview](../README.md)
 
@@ -6,7 +6,7 @@ In real projects, a tumour is sometimes paired with a normal sample from a **dif
 
 **Code:** [mismatched_normal.R](mismatched_normal.R). It takes one tumour from the Part 1 example data and pairs it twice: with its own normal, and with the normal of another patient. Then it runs ASCAT on both pairs, using the same steps as in [Part 1](../1_ascat_basics/README.md).
 
-The plots go to `4_ascat_mixup/results/`, one folder per step: `1_raw_after_correction/`, `2_segmentation/`, `3_ascat_fit/` and `4_genotype_check/`.
+The plots go to `3_ascat_mixup/results/`, one folder per step: `1_raw_after_correction/`, `2_segmentation/`, `3_ascat_fit/` and `4_genotype_check/`.
 
 ## Questions
 
@@ -14,4 +14,4 @@ The plots go to `4_ascat_mixup/results/`, one folder per step: `1_raw_after_corr
 
 ---
 
-**Next:** [Part 5: Structural variant calling with GRIDSS and IGV](../5_gridds/README.md)
+**Next:** [Part 4: Structural variant calling with GRIDSS and IGV](../4_gridss/README.md)

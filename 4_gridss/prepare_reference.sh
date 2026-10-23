@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 ###############################################################################
-# Part 5, step 0: prepare the reference genome for GRIDSS (once-off)
+# Part 4, step 0: prepare the reference genome for GRIDSS (once-off)
 #
-# Run from the repository root:   bash 5_gridds/prepare_reference.sh
+# Run from the repository root:   bash 4_gridss/prepare_reference.sh
 #
 # GRIDSS needs the exact reference the Illumina BAMs were aligned to
 # (GRCh38.d1.vd1, see 0_data/README.md), unpacked and indexed. This script:

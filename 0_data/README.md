@@ -4,8 +4,8 @@ This folder holds the input data for the practical. All data are public and can 
 
 | Folder | Used in | Size |
 |--------|---------|------|
-| [ascat_data/](ascat_data/) | Parts 1–4 (ASCAT) | ~30 MB |
-| [gridds_data/](gridds_data/) | Part 5 (GRIDSS + IGV) | ~13 MB |
+| [ascat_data/](ascat_data/) | Parts 1–3 (ASCAT) | ~30 MB |
+| [gridss_data/](gridss_data/) | Part 4 (GRIDSS + IGV) | ~13 MB |
 
 ---
 
@@ -29,7 +29,7 @@ The four LogR/BAF files are tab-separated: one row per SNP (SNP ID, `chrs`, `pos
 
 ---
 
-## gridds_data
+## gridss_data
 
 **Source:** the [SEQC2 Somatic Mutation Working Group](https://ftp-trace.ncbi.nlm.nih.gov/ReferenceSamples/seqc/Somatic_Mutation_WG/) reference data on the NCBI FTP server (Fang et al. 2021, *Nat Biotechnol*; Talsania et al. 2022, *Genome Biol*). The samples are two commercially available cell lines from the same donor:
 
@@ -57,7 +57,7 @@ The list of SVs in the extracted regions is kept out of this folder on purpose. 
 GRIDSS needs the exact reference the Illumina BAMs were aligned to: `GRCh38.d1.vd1.fa` from the [GDC reference files page](https://gdc.cancer.gov/about-data/gdc-data-processing/gdc-reference-files) (0.9 GB download, ~3.2 GB unpacked). Put the downloaded `GRCh38.d1.vd1.fa.tar.gz` in `reference/` at the repository root, then unpack and index it once with:
 
 ```bash
-bash 5_gridds/prepare_reference.sh
+bash 4_gridss/prepare_reference.sh
 ```
 
 This builds the FASTA index, the BWA index (about 1 hour) and the sequence dictionary next to the FASTA file. You can also download the GDC's pre-built BWA index (3.5 GB) into `reference/` instead; the script then skips the BWA step.

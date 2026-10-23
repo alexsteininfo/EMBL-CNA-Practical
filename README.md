@@ -23,17 +23,16 @@ ASCAT and GRIDSS are just the examples here. However, most callers work on the s
 
 ## The practical, part by part
 
-We will tackle part by part. Each folder has its own README with the instructions, and a QUESTIONS.md with the questions.
+Each folder has its own README with the instructions, and a QUESTIONS.md with the questions. In the session we do **Parts 1 and 4**. Parts 2 and 3 are extra exercises: we may do Part 3 together if there is time, and you can do both on your own afterwards.
 
 | Part | Folder | What you do |
 |------|--------|-------------|
-| 1 | [1_ascat_basics/](1_ascat_basics/README.md) | Run the full ASCAT workflow: raw data → correction → segmentation → purity/ploidy fit → QC. |
-| 2 | [2_ascat_advanced/](2_ascat_advanced/README.md) | Go deeper into ASCAT: the gamma parameter, the segmentation penalty, refitting a profile and tumour-only mode. |
-| 3 | [3_ascat_noise/](3_ascat_noise/README.md) | Add increasing noise to a sample and find where the fit breaks. |
-| 4 | [4_ascat_mixup/](4_ascat_mixup/README.md) | Pair a tumour with a normal from another patient and learn to recognise the mismatch. |
-| 5 | [5_gridds/](5_gridds/README.md) | Call SVs with GRIDSS and inspect the evidence for each call in IGV. |
+| 1 | [1_ascat_basics/](1_ascat_basics/README.md) | Run the full ASCAT workflow: raw data → correction → segmentation → purity/ploidy fit → QC → refitting a doubtful profile. |
+| 2 (extra) | [2_ascat_noise/](2_ascat_noise/README.md) | Add increasing noise to a sample and find where the fit breaks. |
+| 3 (extra) | [3_ascat_mixup/](3_ascat_mixup/README.md) | Pair a tumour with a normal from another patient and learn to recognise the mismatch. |
+| 4 | [4_gridss/](4_gridss/README.md) | Call SVs with GRIDSS and inspect the evidence for each call in IGV. |
 
-Parts 2 and 3 build on the results of Part 1, so run Part 1 first.
+Part 2 builds on the results of Part 1, so run Part 1 first.
 
 ---
 

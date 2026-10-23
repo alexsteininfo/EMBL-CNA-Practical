@@ -1,4 +1,4 @@
-# Part 5: Structural variant calling with GRIDSS and IGV
+# Part 4: Structural variant calling with GRIDSS and IGV
 
 [← Back to overview](../README.md)
 
@@ -17,33 +17,33 @@ GRIDSS can also report **single breakends**, where only one side of the breakpoi
 The reference genome must be unpacked and indexed once before the first run (about 1 hour; see [0_data/README.md](../0_data/README.md#reference-genome-not-included)):
 
 ```bash
-bash 5_gridds/prepare_reference.sh
+bash 4_gridss/prepare_reference.sh
 ```
 
-**Code:** [run_gridss.sh](run_gridss.sh). It runs on the tumour Illumina BAM (`0_data/gridds_data/HCC1395_tumour_illumina.bam`); to use the normal instead, change `BAM=` at the top. In a terminal at the repository root:
+**Code:** [run_gridss.sh](run_gridss.sh). It runs on the tumour Illumina BAM (`0_data/gridss_data/HCC1395_tumour_illumina.bam`); to use the normal instead, change `BAM=` at the top. In a terminal at the repository root:
 
 ```bash
-bash 5_gridds/run_gridss.sh
+bash 4_gridss/run_gridss.sh
 ```
 
-The SV calls are written to `5_gridds/results/1_gridss/output.vcf`.
+The SV calls are written to `4_gridss/results/1_gridss/output.vcf`.
 
 ## Inspect the calls in IGV
 
 First, get a list of the calls that passed GRIDSS's filters:
 
 ```bash
-bash 5_gridds/list_calls.sh
+bash 4_gridss/list_calls.sh
 ```
 
-It prints one line per breakend, with a region you can paste into the IGV search box, and saves the same table to `5_gridds/results/2_pass_calls/pass_calls.txt`.
+It prints one line per breakend, with a region you can paste into the IGV search box, and saves the same table to `4_gridss/results/2_pass_calls/pass_calls.txt`.
 
 Then open IGV and load:
 
 1. The **same BAM file** you just gave to GRIDSS.
-2. The VCF file GRIDSS produced (`5_gridds/results/1_gridss/output.vcf`).
+2. The VCF file GRIDSS produced (`4_gridss/results/1_gridss/output.vcf`).
 
-Go to each SV call and look at the reads around it. To check a call further, also load the PacBio BAMs and the other Illumina BAM from `0_data/gridds_data/`.
+Go to the two calls named in [QUESTIONS.md](QUESTIONS.md) (chr9, and chrX–chrY) and look at the reads around them. To check them further, also load the other Illumina BAM and, if you have time, the PacBio BAMs from `0_data/gridss_data/`.
 
 > **IGV tips:** colour alignments by *insert size and pair orientation* to make discordant pairs stand out, and turn on *show soft-clipped bases* to see where split reads break.
 

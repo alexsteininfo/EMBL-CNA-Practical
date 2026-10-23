@@ -1,4 +1,4 @@
-# Part 3: How much noise can ASCAT tolerate?
+# Part 2: How much noise can ASCAT tolerate?
 
 [← Back to overview](../README.md)
 
@@ -19,7 +19,7 @@ You will need the results of [Part 1](../1_ascat_basics/README.md) (`1_ascat_bas
 3. Run the full ASCAT pipeline from Part 1 on these files.
 4. Compare the profiles, the purity/ploidy estimates and the QC metrics (e.g. MAPD) across noise levels.
 
-The noisy input files are written to `3_ascat_noise/noisy_data/`. The plots go to `3_ascat_noise/results/`, one folder per step:
+The noisy input files are written to `2_ascat_noise/noisy_data/`. The plots go to `2_ascat_noise/results/`, one folder per step:
 
 | Folder | Step |
 |--------|------|
@@ -36,4 +36,4 @@ The noisy input files are written to `3_ascat_noise/noisy_data/`. The plots go t
 
 ---
 
-**Next:** [Part 4: Tumour paired with the wrong normal](../4_ascat_mixup/README.md)
+**Next:** [Part 3: Tumour paired with the wrong normal](../3_ascat_mixup/README.md)

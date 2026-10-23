@@ -17,7 +17,8 @@ dir.create(out_data_dir, recursive = TRUE, showWarnings = FALSE)
 plot_dirs <- c(raw_before = "1_raw_before_correction",
                raw_after  = "2_raw_after_correction",
                segmented  = "3_segmentation",
-               fit        = "4_ascat_fit")
+               fit        = "4_ascat_fit",
+               refit      = "5_refit")
 plot_dirs[] <- file.path(results_dir, plot_dirs)
 for (d in plot_dirs) dir.create(d, recursive = TRUE, showWarnings = FALSE)
 
@@ -26,17 +27,12 @@ if (!file.exists(file.path(data_dir, "Tumor_LogR.txt"))) {
        ". See 0_data/README.md.")
 }
 
-sessionInfo()
-# Q: Which version of R are you running?
-
-
 # ---- Step 1: Load the library ----------------------------------------------
 
 library(ASCAT)
 packageVersion("ASCAT")
 sessionInfo()
-# Q: Which version of ASCAT are you running?
-# Q: Which other packages are loaded with it?
+# Q: Which versions of R and ASCAT are you running?
 
 
 # ---- Step 2: Load the data -------------------------------------------------
@@ -101,7 +97,8 @@ ascat.plotSegmentedData(ascat.bc, img.dir = plot_dirs["segmented"])
 # Q: In S1, find a segment where the BAF splits into two bands away from 0.5.
 #    What does that tell you about the two parental copies there?
 #    What does the LogR do in the same segment?
-# Q: Why does the BAF panel show fewer SNPs than the LogR panel?
+# The BAF panel shows only the SNPs that are heterozygous in the matched
+# normal: homozygous SNPs stay at 0 or 1 and carry no allelic information.
 # Q: Can you spot samples that look problematic? What is wrong with them,
 #    and how might you fix it? (If you can't tell yet, come back after Step 7.)
 
@@ -115,8 +112,6 @@ names(ascat.output)
 head(ascat.output$segments)
 ascat.output$purity
 ascat.output$ploidy
-# Q: What does each element of ascat.output represent?
-#    And the files written to 1_ascat_basics/results/4_ascat_fit/?
 # Q: Open a sunrise plot (4_ascat_fit/*.sunrise.png). What do its axes show,
 #    and what does the chosen point mean? Is there more than one good area?
 # Q: Open the *.ASCATprofile.png files. What do the red and blue lines show?
@@ -130,8 +125,6 @@ ascat.output$ploidy
 
 QC <- ascat.metrics(ascat.bc, ascat.output)
 head(QC)
-# Q: What kind of object is QC? Did the function write anything to disk?
-
 write.table(QC, file.path(out_data_dir, "QC_metrics.txt"),
             sep = "\t", quote = FALSE, col.names = NA)   # col.names = NA keeps the sample names
 
@@ -142,14 +135,39 @@ QC[order(QC$tumour_mapd, decreasing = TRUE),
 # Q: Look at 'tumour_mapd' (noise in the tumour LogR) and 'homdel_fraction'
 #    (fraction of the genome with homozygous deletion).
 #    Which samples stand out, and why might that be?
-# Q: Compare 'GC_correction_before' with 'GC_correction_after'. What do these
-#    numbers measure, and does it fit what you saw in Step 4?
 # Q: Which sample has the lowest goodness_of_fit? Does a high goodness of
 #    fit alone prove that a solution is correct?
 
 
-# ---- Step 8: Save your results ---------------------------------------------
+# ---- Step 8: Refitting a profile -------------------------------------------
+#
+# Look at S63.ASCATprofile.png and S63.sunrise.png in 4_ascat_fit/.
+# Q: Is the chosen point (the cross) in the best (darkest blue) area of the
+#    sunrise plot? Where else is there a good area?
+# Q: Do you believe this solution? Why (not)?
+
+QC["S63", c("purity", "ploidy", "goodness_of_fit")]
+
+# Choose new purity and ploidy bounds that exclude the current solution and
+# include the one you believe in, then refit. runAscat fits all samples; we
+# only look at S63 afterwards.
+ascat.output.refit <- ascat.runAscat(ascat.bc,
+                                     min_ploidy = 1.5, max_ploidy = 5.5,   # change these
+                                     min_purity = 0.1, max_purity = 1.05,  # and/or these
+                                     img.dir = plot_dirs["refit"])
+
+c(purity_before = ascat.output$purity["S63"], purity_after = ascat.output.refit$purity["S63"],
+  ploidy_before = ascat.output$ploidy["S63"], ploidy_after = ascat.output.refit$ploidy["S63"])
+# Q: Did the refit change anything? If not, which bounds do you have to
+#    change so that ASCAT picks the other good area of the sunrise plot?
+# Q: Compare S63.ASCATprofile.png in 4_ascat_fit/ and 5_refit/.
+#    Which solution do you think is better?
+# Q: How could you find out for sure which one is correct?
+#    (Hint: what extra data or experiment would settle it?)
+
+
+# ---- Step 9: Save your results ---------------------------------------------
 
 save(ascat.bc, ascat.output, QC, file = file.path(out_data_dir, "ASCAT_objects.Rdata"))
-# You need this file in Parts 2 and 3.
+# You need this file in Part 2.
 # Reload it later with: load("1_ascat_basics/results/data/ASCAT_objects.Rdata")

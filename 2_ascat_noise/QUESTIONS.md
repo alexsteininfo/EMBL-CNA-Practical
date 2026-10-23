@@ -1,6 +1,6 @@
-# Part 3: Questions
+# Part 2: Questions
 
-Answer these while you run [noise_experiment.R](noise_experiment.R) line by line. Folder names refer to `3_ascat_noise/results/`.
+Answer these while you run [noise_experiment.R](noise_experiment.R) line by line. Folder names refer to `2_ascat_noise/results/`.
 
 ## Step 1: Before running anything
 

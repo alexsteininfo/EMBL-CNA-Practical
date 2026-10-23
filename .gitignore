@@ -6,11 +6,10 @@
 
 # Results folder
 1_ascat_basics/results
-2_ascat_advanced/results
-3_ascat_noise/results
-4_ascat_mixup/results
-5_gridds/results/
+2_ascat_noise/results
+3_ascat_mixup/results
+4_gridss/results/
 
 # Generated data
-3_ascat_noise/noisy_data/
-4_ascat_mixup/data/
+2_ascat_noise/noisy_data/
+3_ascat_mixup/data/

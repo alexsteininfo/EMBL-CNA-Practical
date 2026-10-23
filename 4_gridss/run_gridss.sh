@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 ###############################################################################
-# Part 5, step 1: call structural variants with GRIDSS2
+# Part 4, step 1: call structural variants with GRIDSS2
 #
-# Run from the repository root:   bash 5_gridds/run_gridss.sh
+# Run from the repository root:   bash 4_gridss/run_gridss.sh
 #
 # By default GRIDSS runs on the tumour Illumina BAM. To run it on the matched
 # normal instead, change BAM= below to HCC1395BL_normal_illumina.bam. All BAMs
-# are in 0_data/gridds_data/ (see 0_data/README.md). The reference must be
-# prepared once with 5_gridds/prepare_reference.sh.
+# are in 0_data/gridss_data/ (see 0_data/README.md). The reference must be
+# prepared once with 4_gridss/prepare_reference.sh.
 ###############################################################################
 
 set -euo pipefail
 
-BAM="0_data/gridds_data/HCC1395_tumour_illumina.bam"   # aligned short reads (sorted and indexed)
+BAM="0_data/gridss_data/HCC1395_tumour_illumina.bam"   # aligned short reads (sorted and indexed)
 REFERENCE="reference/GRCh38.d1.vd1.fa"   # the genome the BAM was aligned to
 
-OUT_DIR="5_gridds/results/1_gridss"   # step 1; list_calls.sh writes to 2_pass_calls/
+OUT_DIR="4_gridss/results/1_gridss"   # step 1; list_calls.sh writes to 2_pass_calls/
 THREADS=4
 
 # ---- Find GRIDSS -------------------------------------------------------------
@@ -59,7 +59,7 @@ fi
 
 for suffix in fai sa dict; do
   if [[ ! -s "${REFERENCE}.${suffix}" ]]; then
-    echo "Error: ${REFERENCE}.${suffix} not found. Run: bash 5_gridds/prepare_reference.sh" >&2
+    echo "Error: ${REFERENCE}.${suffix} not found. Run: bash 4_gridss/prepare_reference.sh" >&2
     exit 1
   fi
 done
