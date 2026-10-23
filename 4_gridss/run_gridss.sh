@@ -15,6 +15,10 @@ set -euo pipefail
 BAM="0_data/gridss_data/HCC1395_tumour_illumina.bam"   # aligned short reads (sorted and indexed)
 REFERENCE="reference/GRCh38.d1.vd1.fa"   # the genome the BAM was aligned to
 
+# On the course VM, uncomment these two lines (they override the defaults):
+# REFERENCE="/home/training/data/alex/GRCh38.d1.vd1.fa"
+# export GRIDSS_JAR="/home/training/Applications/gridss-2.13.2/gridss-2.13.2-gridss-jar-with-dependencies.jar"
+
 OUT_DIR="4_gridss/results/1_gridss"   # step 1; list_calls.sh writes to 2_pass_calls/
 THREADS=4
 
